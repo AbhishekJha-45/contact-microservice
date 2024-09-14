@@ -4,7 +4,7 @@ const DB_NAME = process.env.DB_NAME;
 const connectDB = async () => {
   try {
     if (!DB_NAME) throw error("db name not found!!!");
-    mongoose.connect(`${process.env.DB_URI}/${DB_NAME}`);
+    mongoose.connect(`${process.env.MONGODB_URI}/${DB_NAME}`);
 
     const connectionInstance = mongoose.connection;
 
