@@ -9,8 +9,8 @@ import verifyRequest from "../middleware/verifyRequest.js";
 
 const router = Router();
 
-router.route("/create-user").post(createUser);
+router.route("/create-user").post(verifyRequest, createUser);
 router.route("/login").post(loginUser);
-router.route("/logout").post(verifyRequest, logOutUser);
+router.route("/logout").get(verifyRequest, logOutUser);
 
 export default router;
