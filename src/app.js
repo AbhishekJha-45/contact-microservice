@@ -16,8 +16,17 @@ app.get("/", (req, res) => {
 
 import userRouter from "./routes/user.route.js";
 import messageRouter from "./routes/message.route.js";
+import globalErrorHandler from "./utils/globalErrorHandler.js";
 //user routes
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/message", messageRouter);
+app.use("*", (req, res) => {
+  res.status(404).json({
+    message: `Requested Route ${req.originalUrl} does not exist`,
+    status: 404,
+  });
+});
+
+app.use(globalErrorHandler);
 export default app;
