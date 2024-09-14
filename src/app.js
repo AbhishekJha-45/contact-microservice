@@ -23,7 +23,7 @@ app.use("/api/v1/user", userRouter);
 app.use("/api/v1/message", messageRouter);
 app.use("*", (req, res) => {
   res.status(404).json({
-    message: `Requested Route ${req.originalUrl} does not exist`,
+    message: `Either Requested Route ${req.originalUrl} does not exist or ${req.method} method is not allowed`,
     status: 404,
   });
 });
